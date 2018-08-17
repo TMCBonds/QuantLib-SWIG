@@ -5,6 +5,14 @@ BUILT_SOURCES = quantlib_wrap.cpp quantlib_wrap.h
 
 EXAMPLES = Bonds DiscreteHedging EquityOptions FRA UnaryFunctions
 
+if JAVA_FINALIZER
+SWIGFLAGS += -DJAVA_FINALIZER
+endif
+
+if JAVA_CLOSEABLE
+SWIGFLAGS += -DJAVA_CLOSEABLE
+endif
+
 if HAVE_JAVA
 if BUILD_JAVA
 

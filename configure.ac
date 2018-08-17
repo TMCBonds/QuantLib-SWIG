@@ -131,6 +131,22 @@ AC_ARG_ENABLE([java],
               [build_java=yes])
 AM_CONDITIONAL(BUILD_JAVA, test "$build_java" != "no")
 
+AC_ARG_ENABLE([java-finalizer],
+              AC_HELP_STRING([--disable-java-finalizer],
+                             [If disabled, the finalizers
+			     will not be generated.  Be careful.]),
+              [java_finalizer=$enableval],
+              [java_finalizer=yes])
+AM_CONDITIONAL(JAVA_FINALIZER, test "$java_finalizer" != "no")
+
+AC_ARG_ENABLE([java-closeable],
+              AC_HELP_STRING([--enable-java-closeable],
+                             [If enabled, the java Objects will implement Closeable]),
+              [java_closeable=$enableval],
+              [java_closeable=no])
+AM_CONDITIONAL(JAVA_CLOSEABLE, test "$java_closable" != "no")
+
+
 AC_ARG_WITH([jdk-include],
             AC_HELP_STRING([--with-jdk-include=INCLUDE_PATH],
                            [Supply the location of JDK header files]),
