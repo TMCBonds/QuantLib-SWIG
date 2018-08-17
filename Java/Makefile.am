@@ -5,6 +5,8 @@ BUILT_SOURCES = quantlib_wrap.cpp quantlib_wrap.h
 
 EXAMPLES = Bonds DiscreteHedging EquityOptions FRA UnaryFunctions
 
+SWIGFLAGS =
+
 if JAVA_FINALIZER
 SWIGFLAGS += -DJAVA_FINALIZER
 endif
@@ -49,7 +51,7 @@ endif
 
 quantlib_wrap.cpp: ../SWIG/*.i
 	mkdir -p org/quantlib
-	$(SWIG) -java -c++ -outdir org/quantlib \
+	$(SWIG) $(SWIGFLAGS) -java -c++ -outdir org/quantlib \
             -package org.quantlib -o quantlib_wrap.cpp ../SWIG/quantlib.i
 
 dist-hook:
